@@ -1,46 +1,45 @@
 #include<stdio.h>
-void fun(int n)
+#include<math.h>
+int pri(int n)
 {
-    int left=0,right=0,fact=0;
-    for(int i=n;left==0;i--)
+    int i;
+    for(i=2;i<n;i++)
     {
-        fact=0;
-        for(int j=1;j<=i/2;j++)
+        if(n%i==0)
         {
-            if(i%j==0)
-            fact++;
-        }
-        if(fact==1)
-        {
-            left=i;
-            break;
+            return 0;
         }
     }
-    for(int i=n;right==0;i++)
-    {
-        fact=0;
-        for(int j=1;j<=n/2;j++)
-        {
-            if(i%j==0)
-            fact++;
-        }
-        if(fact==1)
-        {
-            right=i;
-            break;
-        }
-    }
-    if(right-n>n-left || right-n==n-left)
-    printf("%d",n-left);
-    else
-    printf("%d",right-n);
+    return 1;
 }
 int main()
 {
-    int n;
+    int n,i,p1,p2,p11,p12;
     scanf("%d",&n);
-    if(n==1 || n==2 || n==3 || n==5 || n==7 )
-    printf("0");
+    for(i=n;;i--)
+    {
+        if(pri(i))
+        {
+            p1=i;
+            break;
+        }
+    }
+    for(i=n;;i++)
+    {
+        if(pri(i))
+        {
+            p2=i;
+            break;
+        }
+    }
+    p11=n-p1;
+    p12=p2-n;
+    if(p11>p12)
+    {
+        printf("%d",p12);
+    }
     else
-    fun(n);
+    {
+        printf("%d",p11);
+    }
 }
