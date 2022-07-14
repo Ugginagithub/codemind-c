@@ -1,52 +1,50 @@
 #include<stdio.h>
-void fun(int a)
+#include<math.h>
+int p(int n)
 {
-    int left=0,l,r,right=0,fact=0;
-    for(int i=a;left==0;i--)
+    int i;
+    for(i=2;i<n;i++)
     {
-        fact=0;
-        for(int j=1;j<=i/2;j++)
+        if(n%i==0)
         {
-            if(i%j==0)
-            fact++;
-        }
-        if(fact==1)
-        {
-            left=i;
-            l=a-left;
-            break;
+            return 0;
         }
     }
-    for(int i=a;right==0;i++)
-    {
-        fact=0;
-        for(int j=1;j<=i/2;j++)
-        {
-            if(i%j==0)
-            fact++;
-        }
-        if(fact==1)
-        {
-            right=i;
-            r=right-a;
-            break;
-        }
-    }
-    if(r>l || r==l)
-    printf("%d
-",left);
-    else if( r<l )
-    printf("%d
-",right);
+    return 1;
 }
 int main()
 {
-    int n,x;
+    int n,i;
     scanf("%d",&n);
-    while(n)
+    for(i=0;i<n;i++)
     {
-        scanf("%d",&x);
-        fun(x);
-        n--;
+        int n,i,p1,p2;
+        scanf("%d",&n);
+        for(i=n;;i--)
+        {
+            if(p(i))
+            {
+                p1=i;
+                break;
+            }
+        }
+        for(i=n;;i++)
+        {
+            if(p(i))
+            {
+                p2=i;
+                break;
+            }
+        }
+        if(n-p1>p2-n)
+        {
+            printf("%d
+",p2);
+        }
+        else
+        {
+            printf("%d
+",p1);
+        }
     }
 }
