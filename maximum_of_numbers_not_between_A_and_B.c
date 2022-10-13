@@ -1,26 +1,34 @@
 #include<stdio.h>
 int main()
 {
-    int n,arr[100],i,a,b,m=0;
+    int n;
     scanf("%d",&n);
+    int a[n],i;
     for(i=0;i<n;i++)
     {
-        scanf("%d",&arr[i]);
+        scanf("%d",&a[i]);
     }
-    scanf("%d%d",&a,&b);
+    int x,y;
+    scanf("%d%d",&x,&y);
+    int max=a[0];
+    int c=0;
     for(i=0;i<n;i++)
     {
-        if(m<arr[i])
+        if(!(a[i]>=x&&a[i]<=y))
         {
-            m=arr[i];
+            if(max<a[i])
+            {
+                max=a[i];
+                c++;
+            }
         }
     }
-    if(m>=a&&m<=b)
+    if(c==0)
     {
         printf("-1");
     }
     else
     {
-        printf("%d",m);
+        printf("%d",max);
     }
 }
