@@ -1,48 +1,36 @@
 #include<stdio.h>
-#include<math.h>
-int pri(int n)
-{
-    int i;
-    for(i=2;i<=n/2;i++)
-    {
-        if(n%i==0)
-        {
-            return 0;
-        }
-    }
-    return 1;
-}
-int pali(int n)
-{
-    int rev=0,t;
-    t=n;
-    while(n)
-    {
-        rev=rev*10+n%10;
-        n=n/10;
-    }
-    if(t==rev)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
 int main()
 {
-    int n,i;
+    int n,i,rev=0,r,m,temp,fact=0;
     scanf("%d",&n);
-    for(i=n+1;;i++)
+    i=n+1;
+    while(i>0)
     {
-        if(pali(i))
+        rev=0;
+        temp=i;
+        fact=0;
+    while(temp>0)
+    {
+        r=temp%10;
+        rev=(rev*10)+r;
+        temp/=10;
+    }
+    if(i==rev)
+    {
+        for(m=1;m<=i;m++)
         {
-            if(pri(i))
+            if(i%m==0)
             {
-                printf("%d",i);
-                break;
+                fact++;
             }
         }
+        if(fact==2)
+        {
+            printf("%d",i);
+            break;
+        }
     }
+    i++;
+  }
+  return 0;
 }
